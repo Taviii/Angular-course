@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TodoItem } from '../model/todo-list';
 
 @Component({
@@ -10,7 +10,6 @@ export class TasksTableComponent {
 
   @Input() tasksList: TodoItem[] = [];
 
-  ngOnInit(){
-    console.log(this.tasksList)
-  }
+  @Output() taskChanged = new EventEmitter<void>();
+
 }

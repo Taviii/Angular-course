@@ -4,8 +4,8 @@ import { ModelService } from '../model/model.service';
 
 @Component({
   selector: 'app-edit-list-component',
-  templateUrl: './edit-list-component.component.html',
-  styleUrls: ['./edit-list-component.component.css']
+  templateUrl: './edit-list.component.html',
+  styleUrls: ['./edit-list.component.css']
 })
 export class EditListComponent {
 

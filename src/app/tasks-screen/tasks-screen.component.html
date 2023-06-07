@@ -8,12 +8,12 @@
     <div class="spinner-border" role="status"></div>
   </div>
 
-  <app-tasks-table [tasksList]="model.tasksList()"></app-tasks-table>
+  <app-tasks-table [tasksList]="model.tasksList()" (taskChanged)="model.saveList()"></app-tasks-table>
 
   <p [class.text-danger]="model.tasksList().length === 0">{{ model.tasksList().length | tasksCount }}</p>
   <p [style]="model.tasksList().length === 0 ? 'color: red' : ''">{{ model.tasksList().length | tasksCount }}</p>
 
-  <app-task-filter></app-task-filter>
+  <!-- <app-task-filter></app-task-filter> -->
 
   <div class="text-bg-secondary p-2 rounded">
     <div class="form-check form-switch">

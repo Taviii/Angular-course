@@ -8,8 +8,7 @@ import { UserService } from 'src/app/user.service';
 @Component({
   selector: 'app-login-screen',
   templateUrl: './login-screen.component.html',
-  styleUrls: ['./login-screen.c
-  omponent.css']
+  styleUrls: ['./login-screen.component.css']
 })
 export class LoginScreenComponent {
 

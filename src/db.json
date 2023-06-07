@@ -1,0 +1,20 @@
+{
+    "listy":[
+    {
+        "id":1,
+        "tasks":[
+            {
+                "name": "Wymienić opony",
+                "completed": true
+            },
+            {
+                "name": "Posprzątać garaż",
+                "completed": true
+            },
+            {
+                "name": "Nauka do egzaminu",
+                "completed": true
+            }
+    ]}
+]
+}

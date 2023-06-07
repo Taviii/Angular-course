@@ -12,8 +12,8 @@ export class HeaderComponent{
   @Input() listName?: string;
 
   constructor(public userService: UserService, router: Router){
-    if (userService.loggedInUser === undefined){
-      router.navigateByUrl('/login');
-    }
+    // if (userService.loggedInUser === undefined){
+    //   router.navigateByUrl('/login');
+    // }
   }
 }

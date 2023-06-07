@@ -14,7 +14,7 @@
         <td [ngClass]="{'completed': task.completed}">{{task.name}}</td>
         <td [class.completed]="task.completed" [appFormatujZadanie]="task">{{task.name}}</td>
         <td>
-          <input type="checkbox" [(ngModel)]="task.completed" />
+          <input type="checkbox" [(ngModel)]="task.completed" (change)="taskChanged.emit()"/>
   
           {{task.completed ? 'TAK' : ''}}
   

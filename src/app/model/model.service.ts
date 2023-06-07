@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { TodoList, TodoItem } from "./todo-list";
+import { ModelDaService } from "./model-da.service";
 
 @Injectable()
 export class ModelService {
@@ -8,8 +9,10 @@ export class ModelService {
 
   showCompleted: boolean = false;
 
-  constructor(){
-    this.list = new TodoList
+  readonly ID = 1;
+
+  constructor(private da: ModelDaService){
+    da.getList(this.ID).subscribe(listaZSerwera => this.list = listaZSerwera)
   }
 
   tasksList(): TodoItem[] {
@@ -20,34 +23,17 @@ export class ModelService {
       return this.list.tasks;
     else
       return this.list.tasks.filter(task => !task.completed);
-
-    /*
-    // 1
-    function filtrZadanNieukonczonych(task: TodoItem): boolean {
-      return task.completed === false;
-    }
-    this.list.tasks.filter(filtrZadanNieukonczonych);
-
-    // 2
-    this.list.tasks.filter(function (task: TodoItem): boolean {
-      return task.completed === false;
-    });
-
-    // 3
-    this.list.tasks.filter((task: TodoItem): boolean => {
-      return task.completed === false;
-    });
-
-    // 4
-    this.list.tasks.filter((task: TodoItem): boolean => !task.completed);
-
-    // 5
-    this.list.tasks.filter(task => !task.completed);
-    */
   }
 
   addTask(task: TodoItem) {
     this.list?.tasks?.push(task);
+    this.saveList();
+  }
+
+  saveList(){
+    if (!this.list)
+      throw new Error('List is empty');
+    this.da.saveList(this.ID, this.list).subscribe();
   }
 
 }

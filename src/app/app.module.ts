@@ -14,12 +14,13 @@ import { TasksCountPipe } from './tasks-count.pipe';
 import { FormKontoComponent } from './form-konto/form-konto.component';
 import { TasksScreenComponent } from './tasks-screen/tasks-screen.component';
 import { RouterModule, Routes } from '@angular/router';
-import { EditListComponentComponent } from './edit-list-component/edit-list-component.component';
+import { EditListComponent } from './edit-list/edit-list.component';
+import { ModelModule } from './model/model.module';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: TasksScreenComponent},
   { path: 'login', loadChildren: () => import('./login-area/login-area.module').then(m => m.LoginAreaModule)},
-  { path: edit }
+  { path: "edit/:nrListy", component: EditListComponent},
 ];
 
 
@@ -34,16 +35,16 @@ const routes: Routes = [
     TasksCountPipe,
     FormKontoComponent,
     TasksScreenComponent,
-    EditListComponentComponent,
+    EditListComponent,
   ],
   imports: [
+    ModelModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
   ],
   providers: [
-    ModelService,
     { provide: LOCALE_ID, useValue: 'pl-PL' }
   ],
   bootstrap: [AppComponent]
