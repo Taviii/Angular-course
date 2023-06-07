@@ -1,0 +1,12 @@
+<header class="bg-primary p-2 text-center">
+    <h1 class="text-white">Lista</h1>
+    <h2 class="text-white">{{listName}}</h2>
+
+    <div>
+      <div class="text-white" *ngIf="userService.loggedInUser">
+        Hello, {{ userService.loggedInUser}}
+        <button (click)="userService.logout()" class="text-white btn btn-link">Log out</button>
+      </div>
+      <a class="text-white" routerLink="/login" *ngIf="!userService.loggedInUser">Login</a>
+    </div>
+  </header>

@@ -1,0 +1,11 @@
+<p class="text-danger" *ngIf="nrListy !== 1">Invalid list number</p>
+
+<div *ngIf="nrListy === 1">
+    <label for="name" class="form-label">List name</label>
+    <input id="name" class="form-control" [{ngModel}]="listName"/>
+
+    <div class="row mt-4">
+    <div class="col-2">
+        <button></button>
+    </div>
+</div>

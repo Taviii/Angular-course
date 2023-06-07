@@ -1,0 +1,71 @@
+<app-header [listName]="model.list?.name"></app-header>
+
+<div class="container">
+
+  <app-add-task (addingTask)="model.addTask($event)"></app-add-task>
+
+  <div class="text-center" *ngIf="!model.list">
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+  <app-tasks-table [tasksList]="model.tasksList()"></app-tasks-table>
+
+  <p [class.text-danger]="model.tasksList().length === 0">{{ model.tasksList().length | tasksCount }}</p>
+  <p [style]="model.tasksList().length === 0 ? 'color: red' : ''">{{ model.tasksList().length | tasksCount }}</p>
+
+  <app-task-filter></app-task-filter>
+
+  <div class="text-bg-secondary p-2 rounded">
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch"
+          id="flexSwitchCheckChecked" [(ngModel)]="model.showCompleted">
+      <label class="form-check-label" for="flexSwitchCheckChecked">Ukryj ukończone zadania</label>
+    </div>
+    
+  </div>
+
+</div>
+
+<ng-template #logo>
+  <div class="bg-info">FIRMA</div>
+</ng-template>
+
+<ng-container [ngTemplateOutlet]="logo"></ng-container>
+
+<a routerLink="/edit/1">Edit list</a>
+
+<p>{{ 1233.4567 | number: '1.2-2' }} </p>
+<p>{{ model.list?.createdDate }} </p>
+
+<!--template-driven-->
+<input type="text" [(ngModel)]= "tekst" required minlength="4" #nazwa="ngModel" />
+<ul class="list-unstyled text-danger" *ngIf="nazwa.touched">
+  <li *ngIf="nazwa.errors?.['required']">Podaj nazwę</li>
+  <li *ngIf="nazwa.errors?.['minlength']">Podaj minimum 4 znaki</li>
+
+</ul>
+<button (click)="zapisz(nazwa)">Zapisz</button>
+<style>
+  .ng-touched.ng-invalid { border: 1px solid red;}
+  .ng-valid {border: 1px solid green;}
+</style>
+
+<!--reactive-->
+<form [formGroup]="formularz" (ngSubmit)="zapisz3()">
+
+    <input formControlName="imie" placeholder="Imię" />
+    <input formControlName="nazwisko" placeholder="Nazwisko" />
+
+    <button (click)="zmien3()">Zmień</button>
+    <button type="submit">Zapisz</button>
+
+</form>
+<input [formControl]="nazwa2" />
+<ul class="list-unstyled text-danger" *ngIf="nazwa2.touched">
+  <li *ngIf="nazwa2.errors?.['required']">Podaj nazwę</li>
+  <li *ngIf="nazwa2.errors?.['minlength']">Podaj minimum 4 znaki</li>
+
+</ul>
+
+<button (click)="zmien2()">Zmień</button>
+<button (click)="zapisz2()">Zapisz</button>

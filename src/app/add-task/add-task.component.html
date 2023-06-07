@@ -1,0 +1,4 @@
+<input type="text" id="nazwa" class="form-control my-2" placeholder="Nazwa zadania" #taskName
+  (keyup.enter)="addTask(taskName.value); taskName.value = '' " />
+
+<button class="btn btn-primary btn-sm" (click)="addTask(taskName.value); taskName.value = '' ">Dodaj</button>

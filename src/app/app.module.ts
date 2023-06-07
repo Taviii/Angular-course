@@ -1,18 +1,51 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { AddTaskComponent } from './add-task/add-task.component';
+// import { TasksTableComponent } from './tasks-table/tasks-table.component';
+import { ModelService } from './model/model.service';
+import { WyroznijDirective } from './wyroznij.directive';
+import { FormatujZadanieDirective } from './formatuj-zadanie.directive';
+import { TasksTableComponent } from './tasks-table/tasks-table.component';
+import { TasksCountPipe } from './tasks-count.pipe';
+import { FormKontoComponent } from './form-konto/form-konto.component';
+import { TasksScreenComponent } from './tasks-screen/tasks-screen.component';
+import { RouterModule, Routes } from '@angular/router';
+import { EditListComponentComponent } from './edit-list-component/edit-list-component.component';
+
+const routes: Routes = [
+  { path: '', pathMatch: 'full', component: TasksScreenComponent},
+  { path: 'login', loadChildren: () => import('./login-area/login-area.module').then(m => m.LoginAreaModule)},
+  { path: edit }
+];
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    AddTaskComponent,
+    TasksTableComponent,
+    WyroznijDirective,
+    FormatujZadanieDirective,
+    TasksCountPipe,
+    FormKontoComponent,
+    TasksScreenComponent,
+    EditListComponentComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [
+    ModelService,
+    { provide: LOCALE_ID, useValue: 'pl-PL' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

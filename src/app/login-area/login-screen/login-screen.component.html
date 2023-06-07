@@ -1,0 +1,30 @@
+<div class="container d-flex vh-100">
+
+    <div class="card w-50 mx-auto align-self-center">
+        <div class="card-header text-center">
+                Log in
+        </div>
+        <div class="card-body">
+            <form class="p-3" [formGroup]="form">
+
+                <div class="row">
+                    <label for="login" class="form-label">Login:</label>
+                    <input id="login" type="text" class="form-control" formControlName="login">
+                </div>
+
+                <div class="row my-4">
+                    <label for="password" class="form-label">Password:</label>
+                    <input id="password" type="password" class="form-control" formControlName="password">
+                </div>
+
+                <p class="text-danger" *ngIf="blad">{{ blad }}</p>
+
+                <div class="row">
+                    <button class="btn btn-primary" (click)="login()">Log in</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
