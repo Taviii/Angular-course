@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModelService } from '../model/model.service';
 
 @Component({
@@ -7,13 +7,14 @@ import { ModelService } from '../model/model.service';
   templateUrl: './edit-list.component.html',
   styleUrls: ['./edit-list.component.css']
 })
+
 export class EditListComponent {
 
   nrListy: number = 0;
 
   listName: string = '';
 
-  constructor(activeRoute: ActivatedRoute, private router: RTCOutboundRtpStreamStats, private model: ModelService){
+  constructor(activeRoute: ActivatedRoute, private router: Router, private model: ModelService){
     this.nrListy = +activeRoute.snapshot.params['nrListy'];
     this.listName = model.list?.name || '';
   }
@@ -27,3 +28,7 @@ export class EditListComponent {
     this.model.list.name = this.listName
   }
 }
+function Injection(target: typeof EditListComponent): void | typeof EditListComponent {
+  throw new Error('Function not implemented.');
+}
+

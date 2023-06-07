@@ -35,7 +35,7 @@ const routes: Routes = [
     TasksCountPipe,
     FormKontoComponent,
     TasksScreenComponent,
-    EditListComponent,
+    // HttpClientModule
   ],
   imports: [
     ModelModule,

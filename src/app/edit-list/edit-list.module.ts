@@ -18,4 +18,4 @@ const routes: Routes = [
     ReactiveFormsModule,
   ]
 })
-export class LoginAreaModule { }
+export class EditListModule { }

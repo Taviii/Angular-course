@@ -30,12 +30,14 @@ export class LoginScreenComponent {
 
     this.blad = '';
     console.log(this.form.value);
-    if (this.userService.login(this.form.value.login!, this.form.value.password!)){
+    this.userService.login(this.form.value.login!, this.form.value.password!).subscribe(ok =>{
+    if (ok){
       //sukces
       this.router.navigateByUrl('/');
     } else{
       //zły login
       this.blad = 'Invalid login and/or password'
     }
-  }
+  });
+}
 }

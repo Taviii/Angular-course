@@ -15,6 +15,21 @@
                 "name": "Nauka do egzaminu",
                 "completed": true
             }
-    ]}
-]
+            ],
+                "name": "Lista Zadań",
+                "createdDate": "2023-06-07T11:25:00.381Z"
+    }
+    ],
+        "users":[
+             {
+                "id":"1",
+                "login": "student",
+                "password": "password"
+            },
+            {
+                "id":"2",
+                "login": "student2",
+                "password": "password2"
+            }
+                ]
 }
